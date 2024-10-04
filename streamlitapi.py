@@ -1,6 +1,7 @@
 import pickle 
 import streamlit as st
 import os
+import pandas as pd  # Import pandas
 
 # Load the model
 model_path = os.path.join(os.path.dirname(__file__), 'Student_Performance_Prediction_Model.pkl') 
@@ -45,8 +46,12 @@ def main():
 
     # Only proceed with prediction if there are no errors
     if st.button('Predict') and not error:
+        # Create a DataFrame with the correct column names
+        input_data = pd.DataFrame([[Age, Library, Class, Extracurricular]], 
+                                  columns=['Age', 'Library_weekly_hours', 'Class_weekly_attendance_hours', 'Extra-curricular_weekly_hours'])
+        
         # Perform the prediction
-        makeprediction = model.predict([[Age, Library, Class, Extracurricular]])
+        makeprediction = model.predict(input_data)
         score = makeprediction[0]
         
         # Display the result
