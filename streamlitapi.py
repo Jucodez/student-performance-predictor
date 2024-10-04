@@ -11,10 +11,10 @@ def main():
     st.title('Student Performance Prediction')
 
     # Input variables with placeholders
-    Age = st.text_input('Age of student (years)', placeholder="e.g., 18.5")
-    Library = st.text_input('Hours in the library per week', placeholder="e.g., 5.0")
-    Class = st.text_input('Hours of class attendance per week', placeholder="e.g., 20.0")
-    Extracurricular = st.text_input('Hours of extra-curricular activities per week', placeholder="e.g., 10.5")
+    Age = st.text_input('Age of student (years)', placeholder="e.g., 18")
+    Library = st.text_input('Hours in the library per week', placeholder="e.g., 5")
+    Class = st.text_input('Hours of class attendance per week', placeholder="e.g., 20")
+    Extracurricular = st.text_input('Hours of extra-curricular activities per week', placeholder="e.g., 10")
     
     # Error flag to track if all inputs are valid
     error = False
