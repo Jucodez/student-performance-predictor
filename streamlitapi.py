@@ -2,6 +2,7 @@ import pickle
 import streamlit as st
 import os
 import pandas as pd
+import numpy as np  # Import numpy for clipping
 
 # Load the model
 model_path = os.path.join(os.path.dirname(__file__), 'Student_Performance_Prediction_Model.pkl') 
@@ -72,8 +73,11 @@ def main():
             makeprediction = model.predict(input_data)
             score = makeprediction[0]
             
+            # Step to apply clipping between 0 and 100
+            score_clipped = np.clip(score, 0, 100)
+
             # Display the result
-            st.success(f'This student is expected to score {score:.0f} in their upcoming exam')
+            st.success(f'This student is expected to score {score_clipped:.0f} in their upcoming exam')
 
 if __name__ == '__main__':
     main()
